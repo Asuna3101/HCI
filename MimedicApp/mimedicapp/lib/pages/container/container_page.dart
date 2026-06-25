@@ -17,35 +17,22 @@ class _ContainerPageState extends State<ContainerPage> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ContainerController());
+    final controller = Get.find<ContainerController>();
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        final navigator = Get.nestedKey(1)?.currentState;
-        if (navigator != null && navigator.canPop()) {
-          navigator.pop();
-        } else {
-          // Si no hay más en stack, salir de la app
-          Get.back();
-        }
+        if (!controller.handleBack()) return;
+        Get.back();
       },
       child: Scaffold(
-        appBar: Topbar(),
+        appBar: const Topbar(),
         body: IndexedStack(
           index: allTabs.indexOf(current),
           children: controller.views,
         ),
         bottomNavigationBar: Bottombar(
           current: current,
-          onTap: (tab) {
-            if (tab == AppTab.home) {
-              final navigator = Get.nestedKey(1)?.currentState;
-              if (navigator != null) {
-                navigator.popUntil((route) => route.isFirst);
-              }
-            }
-            setState(() => current = tab);
-          },
+          onTap: (tab) => setState(() => current = tab),
         ),
       ),
     );

@@ -5,6 +5,7 @@ from app.seeders.seed_comidas import seed_comidas
 from app.seeders.seed_categorias import seed_categorias
 from app.seeders.seed_ejercicios import seed_ejercicios
 from app.seeders.migrate_comidas_usuario import migrate_comidas_usuario
+from app.seeders.seed_habitos import seed_habitos
 
 
 def run_all_seeders():
@@ -17,6 +18,7 @@ def run_all_seeders():
         ("categorias", seed_categorias),
         ("comidas", seed_comidas),
         ("ejercicios", seed_ejercicios),
+        ("habitos", seed_habitos),
     ]
     for name, fn in tasks:
         try:

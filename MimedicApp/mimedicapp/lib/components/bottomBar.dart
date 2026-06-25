@@ -23,7 +23,7 @@ class Bottombar extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        minimum: const EdgeInsets.only(top: 6),
+        minimum: const EdgeInsets.only(top: 4),
         child: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (index) => onTap(tabs[index]),
@@ -31,14 +31,19 @@ class Bottombar extends StatelessWidget {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.accent,
-          unselectedItemColor: Colors.white70,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          iconSize: 40,
+          unselectedItemColor: Colors.white54,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.bold,
+          ),
+          unselectedLabelStyle: const TextStyle(fontSize: 10),
+          iconSize: 26,
           items: tabs.map((tab) {
             return BottomNavigationBarItem(
               icon: Icon(bottomTabIcons[tab]),
-              label: '',
+              label: bottomTabLabels[tab] ?? '',
             );
           }).toList(),
         ),

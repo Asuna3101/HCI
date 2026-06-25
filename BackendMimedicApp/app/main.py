@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from sqlalchemy import text
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api.v1.endpoints import auth, medicamentoxusuario, toma, unidad, healthcare, appointment_reminders, ejercicioxusuario, comidas, categorias, users, reportes, profile
+from app.api.v1.endpoints import auth, medicamentoxusuario, toma, unidad, healthcare, appointment_reminders, ejercicioxusuario, comidas, categorias, users, reportes, profile, habitos, gamificacion
 from app.core.database import engine
 from app.models import base
 from app.seeders.run_seeders import run_all_seeders
@@ -41,6 +41,8 @@ app.include_router(categorias.router,prefix=f"{settings.API_V1_STR}/categorias",
 app.include_router(users.router,prefix=f"{settings.API_V1_STR}/users",tags=["users"],)
 app.include_router(reportes.router,prefix=f"{settings.API_V1_STR}/reportes",tags=["reportes"],)
 app.include_router(profile.router,prefix=f"{settings.API_V1_STR}/profile",tags=["profile"],)
+app.include_router(habitos.router, prefix=f"{settings.API_V1_STR}/habitos", tags=["habitos"])
+app.include_router(gamificacion.router, prefix=f"{settings.API_V1_STR}/gamificacion", tags=["gamificacion"])
 
 @app.get("/")
 def read_root():

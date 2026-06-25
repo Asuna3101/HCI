@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
-enum AppTab { home, tasks, settings }
+enum AppTab { home, progreso, logros, ajustes }
 
 const List<AppTab> allTabs = [
   AppTab.home,
-  AppTab.tasks,
-  AppTab.settings
+  AppTab.progreso,
+  AppTab.logros,
+  AppTab.ajustes,
 ];
-
 
 const Map<AppTab, IconData> bottomTabIcons = {
   AppTab.home: Icons.home_rounded,
-  AppTab.tasks: Icons.edit_note_rounded,
-  AppTab.settings: Icons.menu_rounded,
+  AppTab.progreso: Icons.bar_chart_rounded,
+  AppTab.logros: Icons.emoji_events_rounded,
+  AppTab.ajustes: Icons.settings_rounded,
+};
+
+const Map<AppTab, String> bottomTabLabels = {
+  AppTab.home: 'Hoy',
+  AppTab.progreso: 'Progreso',
+  AppTab.logros: 'Logros',
+  AppTab.ajustes: 'Ajustes',
 };

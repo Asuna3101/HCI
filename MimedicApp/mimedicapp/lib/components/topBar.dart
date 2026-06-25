@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mimedicapp/configs/colors.dart';
-import 'package:mimedicapp/pages/notificaciones/notificaciones_page.dart';
 import 'package:mimedicapp/pages/profile/profile_page.dart';
 
-class Topbar extends StatelessWidget implements PreferredSizeWidget { 
-
+class Topbar extends StatelessWidget implements PreferredSizeWidget {
   const Topbar({super.key});
 
   @override
@@ -15,26 +13,33 @@ class Topbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.primary,
-      leadingWidth: 64,
+      leadingWidth: 140,
       leading: Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: Image.asset(
-          'assets/img/ico.png',
-          height: 10,
+        padding: const EdgeInsets.only(left: 16),
+        child: Row(
+          children: [
+            const Icon(Icons.fitness_center_rounded,
+                color: AppColors.gold, size: 22),
+            const SizedBox(width: 6),
+            const Text(
+              'HabitQuest',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.3,
+              ),
+            ),
+          ],
         ),
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.notifications_none, color: AppColors.accent, size: 30),
-          onPressed: () => Get.to(() => const NotificationsPage()),
-        ),
-        IconButton(
-          icon: const Icon(Icons.person_2_rounded, color: AppColors.accent, size: 30),
+          icon: const Icon(Icons.person_2_rounded,
+              color: AppColors.accent, size: 28),
           onPressed: () => Get.to(() => const ProfilePage()),
         ),
       ],
     );
   }
 }
-
-

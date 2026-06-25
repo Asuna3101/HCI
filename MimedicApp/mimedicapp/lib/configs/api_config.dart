@@ -12,27 +12,21 @@ class ApiConfig {
     'Accept': 'application/json',
   };
 
-  // ---------- ROUTES ----------
+  // ---------- AUTH ----------
   static const String loginEndpoint = '/auth/login';
   static const String loginFormEndpoint = '/auth/login';
   static const String registerEndpoint = '/auth/register';
   static const String usersEndpoint = '/users';
   static const String currentUserEndpoint = '/users/me';
-  static const String medicamentosEndpoint = '/medicamentos';
-  static const String medicamentosUsuarioEndpoint =
-      '/medicamentos/usuario/lista';
-  static const String agregarMedicamentoEndpoint =
-      '/medicamentos/usuario/registrar';
-  static const String actualizarMedicamentoEndpoint =
-      '/medicamentos/usuario/actualizar';
-  static const String eliminarMedicamentosEndpoint =
-      '/medicamentos/usuario/eliminar-lista';
-  static const String unidadesEndpoint = '/unidades';
-  static const String comidasEndpoint = '/comidas';
-  static const String categoriasEndpoint = '/categorias';
-  static const String comidasSectionsEndpoint = '/comidas/sections';
-  static const String ejerciciosEndpoint = '/ejercicios';
-  static const String ejerciciosUsuarioEndpoint = '/ejercicios/usuario';
+
+  // ---------- HÁBITOS ----------
+  static const String habitosEndpoint = '/habitos';
+  static const String habitosLogsEndpoint = '/habitos/logs';
+  static const String habitosProgresoEndpoint = '/habitos/progreso';
+
+  // ---------- GAMIFICACIÓN ----------
+  static const String gamificacionProgresoEndpoint = '/gamificacion/progreso';
+  static const String logrosEndpoint = '/gamificacion/logros';
 
   // Helper para construir URLs absolutas (normaliza /)
   static String url(String path) {
@@ -50,30 +44,17 @@ class ApiConfig {
     return baseUrl;
   }
 
-  // ---------- HEALTH (catálogos EN ESPAÑOL) ----------
-  static String clinics() => '$baseUrl/health/clinicas';
+  // ---------- HÁBITOS (helpers) ----------
+  static String habitoCheckIn(int habitoId) =>
+      '$baseUrl/habitos/$habitoId/check-in';
 
-  static String specialties(int clinicId) =>
-      '$baseUrl/health/clinicas/$clinicId/especialidades';
-
-  // Backend espera query params: /health/doctores?clinica_id=&especialidad_id=
-  static String doctors(int clinicId, int specialtyId) =>
-      '$baseUrl/health/doctores?clinica_id=$clinicId&especialidad_id=$specialtyId';
-
-  // ---------- APPOINTMENT REMINDERS ----------
-  // Nombre explícito para evitar confusiones
-  static String appointmentReminders() =>
-      '$baseUrl/health/appointment-reminders';
-
-  // ---------- TOMAS (medicamentos) ----------
-  static String tomas() => '$baseUrl/tomas';
-  static String tomasPending() => '${tomas()}/pending';
-  static String tomasPostpone(int tomaId, int minutes) =>
-      '${tomas()}/$tomaId/postpone?minutes=$minutes';
-
-  // (Deprecado) Mantén temporalmente si ya usabas ApiConfig.reminders()
-  @Deprecated('Usa appointmentReminders()')
-  static String reminders() => appointmentReminders();
+  static String habitoLogs({String? fecha, int? dias}) {
+    final params = <String>[];
+    if (fecha != null) params.add('fecha=$fecha');
+    if (dias != null) params.add('dias=$dias');
+    final query = params.isEmpty ? '' : '?${params.join('&')}';
+    return '$baseUrl/habitos/logs$query';
+  }
 
   /// Instrucciones rápidas para IP local
   static String getIpInstructions() => '''
@@ -89,7 +70,7 @@ Para conectar con tu backend local:
    - Dispositivo físico (misma Wi-Fi):
      flutter run --dart-define=BASE_URL=http://TU_IP_LOCAL:8000/api/v1
    - iOS Simulator:
-     flutter run --dart-define=BASE_URL=http://127.0.0.1:8002/api/v1
+     flutter run --dart-define=BASE_URL=http://127.0.0.1:8000/api/v1
 
 Notas:
 - Evita hardcodear IPs en código; usa --dart-define.

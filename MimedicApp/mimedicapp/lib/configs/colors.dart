@@ -15,6 +15,10 @@ class AppColors {
   static const Color success = Color(0xFF2E7D32);
   static const Color warning = Color(0xFFFFA000);
 
+  // Gamificación
+  static const Color gold = Color(0xFFFFD700);
+  static const Color goldLight = Color(0xFFFFF8DC);
+
   //Métodos dinámicos para obtener colores según componente
   static Color getButtonColor(BuildContext context) {
     return primary; // Morado como color del botón por defecto
