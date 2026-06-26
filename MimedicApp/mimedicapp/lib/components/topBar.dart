@@ -18,10 +18,10 @@ class Topbar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 16),
         child: Row(
           children: [
-            const Icon(Icons.fitness_center_rounded,
+            Icon(Icons.fitness_center_rounded,
                 color: AppColors.gold, size: 22),
             const SizedBox(width: 6),
-            const Text(
+            Text(
               'HabitQuest',
               style: TextStyle(
                 color: Colors.white,
@@ -35,7 +35,7 @@ class Topbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.person_2_rounded,
+          icon: Icon(Icons.person_2_rounded,
               color: AppColors.accent, size: 28),
           onPressed: () => Get.to(() => const ProfilePage()),
         ),

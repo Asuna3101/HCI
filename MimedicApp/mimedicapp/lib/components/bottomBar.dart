@@ -34,11 +34,11 @@ class Bottombar extends StatelessWidget {
           unselectedItemColor: Colors.white54,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedLabelStyle: const TextStyle(
+          selectedLabelStyle: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.bold,
           ),
-          unselectedLabelStyle: const TextStyle(fontSize: 10),
+          unselectedLabelStyle: TextStyle(fontSize: 10),
           iconSize: 26,
           items: tabs.map((tab) {
             return BottomNavigationBarItem(

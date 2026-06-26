@@ -18,7 +18,7 @@ class ProfileActions extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Seguridad y cuenta',
           style: TextStyle(
             fontSize: 18,
@@ -69,7 +69,7 @@ class _ActionTile extends StatelessWidget {
         child: Icon(icon, color: color),
       ),
       title: Text(title),
-      trailing: const Icon(Icons.chevron_right),
+      trailing: Icon(Icons.chevron_right),
       onTap: onTap,
     );
   }

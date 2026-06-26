@@ -63,7 +63,7 @@ class LoginControlador extends GetxController {
         'Has iniciado sesión correctamente',
         backgroundColor: Colors.green[100],
         colorText: Colors.green[800],
-        icon: const Icon(Icons.check_circle, color: Colors.green),
+        icon: Icon(Icons.check_circle, color: Colors.green),
         duration: const Duration(seconds: 3),
       );
 
@@ -90,7 +90,7 @@ class LoginControlador extends GetxController {
         errorMsg,
         backgroundColor: Colors.red[100],
         colorText: Colors.red[800],
-        icon: const Icon(Icons.error, color: Colors.red),
+        icon: Icon(Icons.error, color: Colors.red),
         duration: const Duration(seconds: 4),
       );
     } finally {

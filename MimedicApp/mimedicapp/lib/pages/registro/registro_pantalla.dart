@@ -14,7 +14,7 @@ class PaginaRegistro extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           '',
           style: TextStyle(
             fontFamily: 'Blond',
@@ -25,7 +25,7 @@ class PaginaRegistro extends StatelessWidget {
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColors.primary),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           onPressed: () => controlador.irAlInicio(),
         ),
       ),
@@ -46,7 +46,7 @@ class PaginaRegistro extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Título
-                const Text(
+                Text(
                   'Crear Cuenta',
                   style: TextStyle(
                     fontFamily: 'Blond',
@@ -61,10 +61,10 @@ class PaginaRegistro extends StatelessWidget {
                   controller: controlador.nombreController,
                   validator: controlador.validarNombre,
                   onChanged: (_) => controlador.clearError(),
-                  style: const TextStyle(fontFamily: 'Formularios'),
+                  style: TextStyle(fontFamily: 'Formularios'),
                   decoration: InputDecoration(
                     labelText: 'Nombre completo',
-                    prefixIcon: const Icon(Icons.person_outline),
+                    prefixIcon: Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -82,10 +82,10 @@ class PaginaRegistro extends StatelessWidget {
                   validator: controlador.validarCorreo,
                   onChanged: (_) => controlador.clearError(),
                   keyboardType: TextInputType.emailAddress,
-                  style: const TextStyle(fontFamily: 'Formularios'),
+                  style: TextStyle(fontFamily: 'Formularios'),
                   decoration: InputDecoration(
                     labelText: 'Correo electrónico',
-                    prefixIcon: const Icon(Icons.email_outlined),
+                    prefixIcon: Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -103,10 +103,10 @@ class PaginaRegistro extends StatelessWidget {
                   validator: controlador.validarCelular,
                   onChanged: (_) => controlador.clearError(),
                   keyboardType: TextInputType.phone,
-                  style: const TextStyle(fontFamily: 'Formularios'),
+                  style: TextStyle(fontFamily: 'Formularios'),
                   decoration: InputDecoration(
                     labelText: 'Número de celular',
-                    prefixIcon: const Icon(Icons.phone_outlined),
+                    prefixIcon: Icon(Icons.phone_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -168,10 +168,10 @@ class PaginaRegistro extends StatelessWidget {
                       validator: controlador.validarContrasena,
                       onChanged: (_) => controlador.clearError(),
                       obscureText: controlador.obscurePassword.value,
-                      style: const TextStyle(fontFamily: 'Formularios'),
+                      style: TextStyle(fontFamily: 'Formularios'),
                       decoration: InputDecoration(
                         labelText: 'Contraseña',
-                        prefixIcon: const Icon(Icons.lock_outlined),
+                        prefixIcon: Icon(Icons.lock_outlined),
                         suffixIcon: IconButton(
                           icon: Icon(
                             controlador.obscurePassword.value
@@ -198,10 +198,10 @@ class PaginaRegistro extends StatelessWidget {
                       validator: controlador.validarConfirmarContrasena,
                       onChanged: (_) => controlador.clearError(),
                       obscureText: controlador.obscureConfirmPassword.value,
-                      style: const TextStyle(fontFamily: 'Formularios'),
+                      style: TextStyle(fontFamily: 'Formularios'),
                       decoration: InputDecoration(
                         labelText: 'Confirmar contraseña',
-                        prefixIcon: const Icon(Icons.lock_outlined),
+                        prefixIcon: Icon(Icons.lock_outlined),
                         suffixIcon: IconButton(
                           icon: Icon(
                             controlador.obscureConfirmPassword.value
@@ -311,7 +311,7 @@ class PaginaRegistro extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       '¿Ya tienes cuenta? ',
                       style: TextStyle(
                         fontFamily: 'Regular',
@@ -319,7 +319,7 @@ class PaginaRegistro extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: controlador.irAlLogin,
-                      child: const Text(
+                      child: Text(
                         'Inicia sesión',
                         style: TextStyle(
                           fontFamily: 'Regular',

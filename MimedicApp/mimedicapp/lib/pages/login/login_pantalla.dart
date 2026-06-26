@@ -14,7 +14,7 @@ class PaginaLogin extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           '',
           style: TextStyle(
             fontFamily: 'Blond',
@@ -25,7 +25,7 @@ class PaginaLogin extends StatelessWidget {
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColors.primary),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           onPressed: () => controlador.irAlInicio(),
         ),
       ),
@@ -46,7 +46,7 @@ class PaginaLogin extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Título
-                const Text(
+                Text(
                   'Iniciar Sesión',
                   style: TextStyle(
                     fontFamily: 'Blond',
@@ -58,7 +58,7 @@ class PaginaLogin extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                const Text(
+                Text(
                   'Ingresa tus credenciales para acceder',
                   style: TextStyle(
                     fontFamily: 'formulario',
@@ -78,7 +78,7 @@ class PaginaLogin extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: 'Correo electrónico',
                     hintText: 'Ingresa tu correo',
-                    prefixIcon: const Icon(Icons.email_outlined),
+                    prefixIcon: Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -101,7 +101,7 @@ class PaginaLogin extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: 'Contraseña',
                         hintText: 'Ingresa tu contraseña',
-                        prefixIcon: const Icon(Icons.lock_outlined),
+                        prefixIcon: Icon(Icons.lock_outlined),
                         suffixIcon: IconButton(
                           icon: Icon(
                             controlador.obscurePassword.value
@@ -133,12 +133,12 @@ class PaginaLogin extends StatelessWidget {
                               value: controlador.rememberMe.value,
                               onChanged: (_) => controlador.toggleRememberMe(),
                             )),
-                        const Text('Recordarme'),
+                        Text('Recordarme'),
                       ],
                     ),
                     TextButton(
                       onPressed: controlador.recuperarContrasena,
-                      child: const Text('¿Olvidaste tu contraseña?'),
+                      child: Text('¿Olvidaste tu contraseña?'),
                     ),
                   ],
                 ),
@@ -227,10 +227,10 @@ class PaginaLogin extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('¿No tienes cuenta? '),
+                      Text('¿No tienes cuenta? '),
                       TextButton(
                         onPressed: controlador.irAlRegistro,
-                        child: const Text(
+                        child: Text(
                           'Regístrate aquí',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),

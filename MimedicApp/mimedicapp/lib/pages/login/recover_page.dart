@@ -12,7 +12,7 @@ class RecoverPage extends StatelessWidget {
     final c = Get.find<RecoverController>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recuperar cuenta'),
+        title: Text('Recuperar cuenta'),
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.primary,
         elevation: 0,
@@ -23,7 +23,7 @@ class RecoverPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Te enviaremos un código de 4 dígitos a tu correo.',
                 style: TextStyle(fontSize: 14, color: Colors.black87),
               ),
@@ -53,7 +53,7 @@ class RecoverPage extends StatelessWidget {
                             child: CircularProgressIndicator(
                                 strokeWidth: 2, color: Colors.white),
                           )
-                        : const Text('Enviar código'),
+                        : Text('Enviar código'),
                   )),
               const SizedBox(height: 16),
               Obx(() {
@@ -71,7 +71,7 @@ class RecoverPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Te enviamos un código de recuperación a tu correo:',
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -80,7 +80,7 @@ class RecoverPage extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           c.lastEmailSent.value,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 15, color: AppColors.primary),
                         ),
                       ],
@@ -90,7 +90,7 @@ class RecoverPage extends StatelessWidget {
                 return const SizedBox.shrink();
               }),
               const SizedBox(height: 8),
-              const Text(
+              Text(
                 'Código de verificación',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
@@ -133,7 +133,7 @@ class RecoverPage extends StatelessWidget {
                               child: CircularProgressIndicator(
                                   strokeWidth: 2, color: Colors.white),
                             )
-                          : const Text('Actualizar contraseña'),
+                          : Text('Actualizar contraseña'),
                     ),
                   )),
             ],
@@ -214,7 +214,7 @@ class _CodeInputState extends State<_CodeInput> {
                 disabledBorder: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),
-              style: const TextStyle(color: Colors.transparent, fontSize: 1),
+              style: TextStyle(color: Colors.transparent, fontSize: 1),
             ),
           ),
         ],

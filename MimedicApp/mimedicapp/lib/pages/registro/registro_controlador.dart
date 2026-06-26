@@ -175,7 +175,7 @@ class RegistroControlador extends GetxController {
         'Tu cuenta ha sido creada correctamente',
         backgroundColor: Colors.green[100],
         colorText: Colors.green[800],
-        icon: const Icon(Icons.check_circle, color: Colors.green),
+        icon: Icon(Icons.check_circle, color: Colors.green),
         duration: const Duration(seconds: 3),
       );
 
@@ -191,7 +191,7 @@ class RegistroControlador extends GetxController {
         e.message,
         backgroundColor: Colors.red[100],
         colorText: Colors.red[800],
-        icon: const Icon(Icons.error, color: Colors.red),
+        icon: Icon(Icons.error, color: Colors.red),
         duration: const Duration(seconds: 4),
       );
     } catch (e) {
@@ -201,7 +201,7 @@ class RegistroControlador extends GetxController {
         'Ocurrió un error inesperado. Por favor, inténtalo de nuevo.',
         backgroundColor: Colors.red[100],
         colorText: Colors.red[800],
-        icon: const Icon(Icons.error, color: Colors.red),
+        icon: Icon(Icons.error, color: Colors.red),
         duration: const Duration(seconds: 4),
       );
       print('Error en registro: $e'); // Para debugging

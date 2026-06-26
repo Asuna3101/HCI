@@ -18,6 +18,12 @@ class LogrosController extends GetxController {
     cargar();
   }
 
+  @override
+  void onReady() {
+    super.onReady();
+    cargar();
+  }
+
   Future<void> cargar() async {
     cargando.value = true;
     try {

@@ -49,14 +49,14 @@ class ResumeDetailsCard extends StatelessWidget {
                   child: Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
                       color: Color(0xFF2C1E4A),
                     ),
                   ),
                 ),
-                const Divider(height: 8),
+                Divider(height: 8),
                 const SizedBox(height: 8),
 
                 ...rows.map((r) => Padding(
@@ -68,7 +68,7 @@ class ResumeDetailsCard extends StatelessWidget {
                             flex: 2,
                             child: Text(
                               r.label,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF2C1E4A),
                               ),
@@ -79,7 +79,7 @@ class ResumeDetailsCard extends StatelessWidget {
                             child: Text(
                               r.value,
                               textAlign: TextAlign.right,
-                              style: const TextStyle(color: Colors.black87),
+                              style: TextStyle(color: Colors.black87),
                             ),
                           ),
                         ],

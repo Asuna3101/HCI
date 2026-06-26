@@ -1,6 +1,22 @@
-from pydantic import BaseModel
 from datetime import date
 from typing import Optional
+
+from pydantic import BaseModel, Field
+
+
+class HabitoCreate(BaseModel):
+    nombre: str = Field(..., min_length=2, max_length=100)
+    descripcion: str = Field(..., min_length=2, max_length=200)
+    icono: str = Field(default="star", max_length=50)
+    puntos_por_completar: int = Field(default=10, ge=1, le=100)
+
+
+class HabitoUpdate(BaseModel):
+    nombre: Optional[str] = Field(default=None, min_length=2, max_length=100)
+    descripcion: Optional[str] = Field(default=None, min_length=2, max_length=200)
+    icono: Optional[str] = Field(default=None, max_length=50)
+    puntos_por_completar: Optional[int] = Field(default=None, ge=1, le=100)
+    activo: Optional[bool] = None
 
 
 class HabitoResponse(BaseModel):

@@ -7,17 +7,15 @@ class CustomButton extends StatelessWidget {
   final bool isOutlined;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     this.isOutlined = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = AppColors.getButtonColor(context);
-    // Ahora el color del texto será beige (secondaryColor)
-    final textColor = AppColors.getSecondaryColor(context);
+    final theme = Theme.of(context);
 
     return SizedBox(
       width: double.infinity,
@@ -25,25 +23,29 @@ class CustomButton extends StatelessWidget {
           ? OutlinedButton(
               onPressed: onPressed,
               style: OutlinedButton.styleFrom(
+                foregroundColor: theme.colorScheme.primary,
+                side: BorderSide(
+                  color: theme.colorScheme.primary,
+                  width: 2,
+                ),
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
-                side: BorderSide(color: backgroundColor, width: 2),
               ),
               child: Text(
                 title,
                 style: TextStyle(
                   fontFamily: 'Titulo',
                   fontSize: 18,
-                  color: backgroundColor, // Color del borde y texto en outlined
                 ),
               ),
             )
           : ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: backgroundColor,
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
@@ -54,8 +56,7 @@ class CustomButton extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Titulo',
                   fontSize: 18,
-                  color:
-                      textColor, // Aquí cambiamos el color del texto al beige
+                  color: Colors.white,
                 ),
               ),
             ),

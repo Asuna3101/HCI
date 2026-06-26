@@ -22,10 +22,63 @@ class HabitsService {
     return Habit.predefinidos;
   }
 
+  Future<Habit?> crearHabito({
+    required String nombre,
+    required String descripcion,
+    required String icono,
+    required int puntos,
+  }) async {
+    try {
+      final data = await _api.post(ApiConfig.habitosEndpoint, {
+        'nombre': nombre,
+        'descripcion': descripcion,
+        'icono': icono,
+        'puntos_por_completar': puntos,
+      });
+
+      if (data is Map<String, dynamic>) {
+        return Habit.fromJson(data);
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  Future<Habit?> actualizarHabito({
+    required int id,
+    required String nombre,
+    required String descripcion,
+    required String icono,
+    required int puntos,
+  }) async {
+    try {
+      final data = await _api.put('/habitos/$id', {
+        'nombre': nombre,
+        'descripcion': descripcion,
+        'icono': icono,
+        'puntos_por_completar': puntos,
+        'activo': true,
+      });
+
+      if (data is Map<String, dynamic>) {
+        return Habit.fromJson(data);
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  Future<bool> eliminarHabito(int id) async {
+    try {
+      await _api.delete('/habitos/$id');
+      return true;
+    } catch (_) {}
+    return false;
+  }
+
   Future<List<HabitLog>> getLogsHoy() async {
     final hoy = DateTime.now();
     final fecha =
         '${hoy.year}-${hoy.month.toString().padLeft(2, '0')}-${hoy.day.toString().padLeft(2, '0')}';
+
     try {
       final data =
           await _api.get('${ApiConfig.habitosLogsEndpoint}?fecha=$fecha');
@@ -42,11 +95,13 @@ class HabitsService {
     final hoy = DateTime.now();
     final fecha =
         '${hoy.year}-${hoy.month.toString().padLeft(2, '0')}-${hoy.day.toString().padLeft(2, '0')}';
+
     try {
       final data = await _api.post(
         ApiConfig.habitoCheckIn(habitoId),
         {'fecha': fecha},
       );
+
       if (data is Map<String, dynamic>) {
         return HabitLog.fromJson(data);
       }
@@ -58,20 +113,30 @@ class HabitsService {
     final hoy = DateTime.now();
     final fecha =
         '${hoy.year}-${hoy.month.toString().padLeft(2, '0')}-${hoy.day.toString().padLeft(2, '0')}';
+
     try {
-      await _api.delete(
-          '${ApiConfig.habitoCheckIn(habitoId)}?fecha=$fecha');
+      await _api.delete('${ApiConfig.habitoCheckIn(habitoId)}?fecha=$fecha');
       return true;
     } catch (_) {}
     return false;
   }
 
   Future<List<Map<String, dynamic>>> getProgresoSemanal() async {
+    return getProgresoPorDias(7);
+  }
+
+  Future<List<Map<String, dynamic>>> getProgresoMensual() async {
+    return getProgresoPorDias(30);
+  }
+
+  Future<List<Map<String, dynamic>>> getProgresoPorDias(int dias) async {
     try {
-      final data = await _api.get(
-          '${ApiConfig.habitosProgresoEndpoint}?dias=7');
+      final data =
+          await _api.get('${ApiConfig.habitosProgresoEndpoint}?dias=$dias');
       if (data is List) {
-        return data.cast<Map<String, dynamic>>();
+        return data
+            .map((e) => Map<String, dynamic>.from(e as Map))
+            .toList();
       }
     } catch (_) {}
     return [];
